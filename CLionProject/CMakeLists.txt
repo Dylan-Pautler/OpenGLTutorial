@@ -13,9 +13,9 @@ include_directories(&{SDL2_INCLUDE_PATH})
 include_directories(&{OPENGL_INCLUDE_DIRS})
 include_directories(&{GLEW_INCLUDE_DIRS})
 
-add_executable(OpenGLTutorialProject main.cpp display.cpp display.h shader.cpp shader.h mesh.cpp mesh.h)
+add_executable(OpenGLTutorialProject main.cpp display.cpp display.h shader.cpp shader.h mesh.cpp mesh.h stb_image.c stb_image.h texture.cpp texture.h)
 
 target_link_libraries(OpenGLTutorialProject ${OPENGL_LIBRARIES}
-                                            ${GLEW_LIBRARIES}
-                                            ${SDL2_LIBRARY} -lSDL2main -lSDL2
-                                            )  # -mwindows -lmingw32 )
+        ${GLEW_LIBRARIES}
+        ${SDL2_LIBRARY} -lSDL2main -lSDL2
+        )  # -mwindows -lmingw32 )

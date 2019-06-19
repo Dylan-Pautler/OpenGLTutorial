@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dylan/CLionProjects/OpenGLTutorialProject/display.h
+SDL2/SDL.h
+-
+string
+-
+
+/home/dylan/CLionProjects/OpenGLTutorialProject/main.cpp
+iostream
+-
+GL/glew.h
+-
+display.h
+/home/dylan/CLionProjects/OpenGLTutorialProject/display.h
+shader.h
+/home/dylan/CLionProjects/OpenGLTutorialProject/shader.h
+mesh.h
+/home/dylan/CLionProjects/OpenGLTutorialProject/mesh.h
+
+/home/dylan/CLionProjects/OpenGLTutorialProject/mesh.h
+glm/glm.hpp
+-
+GL/glew.h
+-
+
+/home/dylan/CLionProjects/OpenGLTutorialProject/shader.h
+string
+-
+GL/glew.h
+-
+

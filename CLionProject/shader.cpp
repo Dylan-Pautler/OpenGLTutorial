@@ -48,10 +48,10 @@ void Shader::Bind()
   glUseProgram(_m_program);
 }
 
-void Shader::Update(const Transform &transform)
+void Shader::Update(const Transform &transform, const Camera &camera)
 {
     // cheap because only needs to send one matrixto the GPU
-    glm::mat4 model = transform.GetModel();
+    glm::mat4 model = camera.GetViewProjection() * transform.GetModel();
 
     //4x4 matrix of float values
     glUniformMatrix4fv(_m_uniforms[TRANSFORM_U], 1 , GL_FALSE, &model[0][0]);

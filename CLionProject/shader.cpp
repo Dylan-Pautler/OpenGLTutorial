@@ -28,6 +28,8 @@ Shader::Shader(const std::string& fileName)
   // validates if this is a proper program
   glValidateProgram(_m_program);
   CheckShaderError(_m_program, GL_VALIDATE_STATUS, true, "Error: Program is invalid: ");
+
+  _m_uniforms[TRANSFORM_U] = glGetUniformLocation(_m_program, "transform");
 }
 
 Shader::~Shader()
@@ -44,6 +46,15 @@ Shader::~Shader()
 void Shader::Bind()
 {
   glUseProgram(_m_program);
+}
+
+void Shader::Update(const Transform &transform)
+{
+    // cheap because only needs to send one matrixto the GPU
+    glm::mat4 model = transform.GetModel();
+
+    //4x4 matrix of float values
+    glUniformMatrix4fv(_m_uniforms[TRANSFORM_U], 1 , GL_FALSE, &model[0][0]);
 }
 
 static GLuint CreateShader(const std::string& text, GLenum shaderType)

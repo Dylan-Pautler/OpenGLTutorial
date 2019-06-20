@@ -20,6 +20,7 @@ Shader::Shader(const std::string& fileName)
     glAttachShader(_m_program, _m_shaders[i]);
 
   glBindAttribLocation(_m_program, 0, "position");
+  glBindAttribLocation(_m_program, 1, "texCoord");
 
   glLinkProgram(_m_program);
   CheckShaderError(_m_program, GL_LINK_STATUS, true, "Error: Program linking failed: ");
@@ -103,9 +104,9 @@ static void CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const s
   if (success == GL_FALSE)
   {
     if(isProgram)
-      glGetProgramInfoLog(shader, sizeof(error), NULL, error);
+      glGetProgramInfoLog(shader, sizeof(error), nullptr, error);
     else
-      glGetShaderInfoLog(shader, sizeof(error), NULL, error);
+      glGetShaderInfoLog(shader, sizeof(error), nullptr, error);
 
     std::cerr << errorMessage << ": '" << error << "'" << std::endl;
   }

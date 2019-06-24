@@ -21,6 +21,7 @@ Shader::Shader(const std::string& fileName)
 
   glBindAttribLocation(_m_program, 0, "position");
   glBindAttribLocation(_m_program, 1, "texCoord");
+  glBindAttribLocation(_m_program, 2, "normal");
 
   glLinkProgram(_m_program);
   CheckShaderError(_m_program, GL_LINK_STATUS, true, "Error: Program linking failed: ");
@@ -50,7 +51,7 @@ void Shader::Bind()
 
 void Shader::Update(const Transform &transform, const Camera &camera)
 {
-    // cheap because only needs to send one matrixto the GPU
+    // cheap because only needs to send one matrix to the GPU
     glm::mat4 model = camera.GetViewProjection() * transform.GetModel();
 
     //4x4 matrix of float values
